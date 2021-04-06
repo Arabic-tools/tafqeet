@@ -1,60 +1,56 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        <h1>تفقيط .كوم</h1>
       </div>
 
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <router-view />
     </v-main>
+    <v-footer>
+      <v-container>
+        <v-row style="text-align:center">
+          <v-col  cols="12" md="6">
+            <p>
+              تفقيط.كوم لتحويل الارقام العربية إلى ما يقابلها كتابة، مع مراعاة
+              التذكير والتأنيث . <br />
+
+              الطريقة المثلى لكتابة الارقام بالحروف عند كتابة الشيكات. <br />
+            </p>
+          </v-col>
+          <v-col cols="12" md="6">
+            <p>
+              للإتصال بنا: Tafqet@inboxeen.com <br />
+              Tafqet is mumbers to Words Converter
+            </p>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
+  name: "App",
+  mounted() {
+    this.$vuetify.rtl = true;
   },
+
+  components: {},
 
   data: () => ({
     //
   }),
 };
 </script>
+<style>
+* {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 400;
+}
+</style>
