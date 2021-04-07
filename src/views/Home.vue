@@ -8,47 +8,74 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" sm="6" md="4">
+      <v-col cols="12" sm="4" md="3">
         <v-text-field v-model="prefix" outlined label="أدخل الكلام السابق">
         </v-text-field>
       </v-col>
-      <v-col cols="12" sm="6" md="4">
-        <v-text-field
-       
-          v-model="arabicNumber"
-         
-          outlined
-          label="أدخل الرقم"
-        >
+      <v-col cols="12" sm="4" md="2">
+        <v-text-field v-model="arabicNumber" outlined label="أدخل الرقم">
         </v-text-field>
       </v-col>
-      <v-col cols="12" sm="6" md="4">
+      <v-col cols="6" sm="4" md="2">
+        <v-select v-model="arabicNumber" outlined label="أدخل الرقم">
+        </v-select>
+      </v-col>
+      <v-col cols="6" sm="4" md="2">
+        <v-select
+          v-model="arabicNumber"
+          :items="['مائة', 'مئة']"
+          outlined
+          label="وجود المد"
+        >
+        </v-select>
+      </v-col>
+      <v-col cols="12" sm="4" md="3">
         <v-text-field v-model="suffix" outlined label="أدخل الكلام اللاحق">
         </v-text-field>
       </v-col>
     </v-row>
     <v-row>
-      <v-col>
+      <v-col cols="12" class="output ma-2">
+        <v-btn class="copy-btn" icon fab>
+          <v-icon v-clipboard:copy="output">
+            mdi-content-copy
+          </v-icon>
+        </v-btn>
         <p>{{ output }}</p>
       </v-col>
+    </v-row>
+    <v-row>
+      <v-col></v-col>
     </v-row>
   </v-container>
 </template>
 
+<style lang="scss">
+.output {
+  position: relative;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+
+  .copy-btn {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
+}
+</style>
 <script>
 import { tafqeet } from "../scripts/tafqeet";
 export default {
   name: "Home",
-  watch : {
-    arabicNumber(){
+  watch: {
+    arabicNumber() {
       //  @input="changeArbic(arabicNumber)"
-    this.arabicNumber = this.changeArbic(this.arabicNumber)
-    }
-
+      this.arabicNumber = this.changeArbic(this.arabicNumber);
+    },
   },
   methods: {
     changeArbic(num) {
-      console.log("hi")
+      console.log("hi");
       let arabicArr = {
         "٠": 0,
         "١": 1,
@@ -84,6 +111,13 @@ export default {
   },
   data() {
     return {
+      types: [
+        {
+          text: "ريال سعودي",
+          value: "ريال سعودياً",
+        },
+      ],
+
       arabicNumber: "",
       prefix: "فقط",
       suffix: "لا غير",
