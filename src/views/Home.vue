@@ -21,12 +21,12 @@
           v-model="countee"
           :items="types"
           outlined
-          :item-value="itemValue()"
+          :item-value="itemValue"
           label="أدخل المعدود"
         >
         </v-select>
       </v-col>
-      <v-col cols="6" sm="4" md="2">
+      <!-- <v-col cols="6" sm="4" md="2">
         <v-select
           v-model="arabicNumber"
           :items="['مائة', 'مئة']"
@@ -34,7 +34,7 @@
           label="وجود المد"
         >
         </v-select>
-      </v-col>
+      </v-col> -->
       <v-col cols="12" sm="4" md="3">
         <v-text-field v-model="suffix" outlined label="أدخل الكلام اللاحق">
         </v-text-field>
@@ -78,7 +78,25 @@ export default {
     },
   },
   methods: {
-    itemValue(item) {},
+    itemValue(item) {
+      return item;
+    },
+
+    getTafqeetwithCountee(number, countee) {
+      // console.log(tafqeet(number) + this.getCountee(countee, number));
+      let x = parseInt(number);
+
+      return (
+        (x > 2 ? tafqeet(number) + " " : "") + this.getCountee(countee, number)
+      );
+    },
+    getCountee(countee, number) {
+      let x = parseInt(number);
+      if (x === 1) return countee.text;
+      else if (x === 2) return countee["2"];
+      else if (x > 2 && x < 11) return countee["3"];
+      else return countee["11"];
+    },
     changeArbic(num) {
       let arabicArr = {
         "٠": 0,
@@ -110,12 +128,15 @@ export default {
   },
   computed: {
     output() {
+      this.getTafqeetwithCountee(this.arabicNumber, this.countee);
+      let main = this.arabicNumber;
+      let sub = (main - Math.floor(main)).toFixed(2) * 100;
+
       return (
         this.prefix +
         " " +
-        tafqeet(this.arabicNumber) +
-        " " +
-        this.countee +
+        this.getTafqeetwithCountee(this.arabicNumber, this.countee) +
+        (sub ? " و" + this.getTafqeetwithCountee(sub, this.countee.sub) : "") +
         " " +
         this.suffix
       );
@@ -123,24 +144,58 @@ export default {
   },
   data() {
     return {
-      countee: "",
+      countee: {
+        text: "ريال سعودي",
+        "2": "ريالان سعوديان",
+        "3": "ريالات سعودية",
+        "11": "ريالاً سعودياً",
+        sub: {
+          text: "هللة",
+          "2": "هللتان",
+          "3": "هللات",
+          "11": "هللة",
+        },
+      },
       types: [
         {
           text: "ريال سعودي",
-          2: "ريالان سعوديان",
-          11: "ريالاً سعودياً",
+          "2": "ريالان سعوديان",
+          "3": "ريالات سعودية",
+          "11": "ريالاً سعودياً",
+          sub: {
+            text: "هللة",
+            "2": "هللتان",
+            "3": "هللات",
+            "11": "هللة",
+          },
         },
         {
-          text: "جنيه مصري ",
-          value: "جنيهاً مصرياً",
+          text: "جنيه مصري",
+          "2": "جنيهان مصريان",
+          "3": "جنيهات مصرية",
+          "11": "جنيهاً مصرياً",
+          sub: {
+            text: "قرش",
+            "2": "قرشان",
+            "3": "قروش",
+            "11": "قرشاً",
+          },
         },
         {
           text: "ليرة سورية",
-          value: "ليرة سورية",
+          "2": "ليرتان سوريتان",
+          "3": "ليرات سورية",
+          "11": "ليرةً سوريةً",
+          sub: {
+            text: "قرش",
+            "2": "قرشان",
+            "3": "قروش",
+            "11": "قرشاً",
+          },
         },
       ],
 
-      arabicNumber: "",
+      arabicNumber: "1",
       prefix: "فقط",
       suffix: "لا غير",
     };
