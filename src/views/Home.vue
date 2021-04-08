@@ -2,18 +2,23 @@
   <v-container>
     <v-row style="height: 30vh" align="center">
       <v-col style="text-align: center">
-        <h2 style="font-size: 3rem">
+        <h2 style="font-size: 2.8rem">
           تحويل الأعداد العربية إلى ما يقابلها كتابةً
         </h2>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col cols="12" sm="4" md="3">
+    <v-row justify="center">
+      <v-col cols="12" sm="4" md="2">
         <v-text-field v-model="prefix" outlined label="أدخل الكلام السابق">
         </v-text-field>
       </v-col>
-      <v-col cols="12" sm="4" md="2">
-        <v-text-field v-model="arabicNumber" outlined label="أدخل الرقم">
+      <v-col cols="12" sm="4" md="3">
+        <v-text-field
+          color="indigo base"
+          v-model="arabicNumber"
+          outlined
+          label="أدخل الرقم"
+        >
         </v-text-field>
       </v-col>
       <v-col cols="6" sm="4" md="2">
@@ -35,16 +40,24 @@
         >
         </v-select>
       </v-col> -->
-      <v-col cols="12" sm="4" md="3">
+      <v-col cols="12" sm="4" md="2">
         <v-text-field v-model="suffix" outlined label="أدخل الكلام اللاحق">
         </v-text-field>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col cols="12" class="output ma-2">
-        <v-btn class="copy-btn" icon fab>
-          <v-icon v-clipboard:copy="output"> mdi-content-copy </v-icon>
-        </v-btn>
+    <v-row justify="center">
+      <v-col cols="10" class="output ma-2">
+        <div class="copy-btn">
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn v-bind="attrs" v-on="on" icon fab>
+                <v-icon v-clipboard:copy="output"> mdi-content-copy </v-icon>
+              </v-btn>
+            </template>
+            <span>إضغط هنا للنسخ</span>
+          </v-tooltip>
+        </div>
+
         <p>{{ output }}</p>
       </v-col>
     </v-row>
@@ -63,7 +76,7 @@
   .copy-btn {
     position: absolute;
     left: 5px;
-    top: 5px;
+    bottom: 5px;
   }
 }
 </style>
