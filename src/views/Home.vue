@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <v-row style="height:30vh" align="center">
-      <v-col style="text-align: center;">
-        <h2 style="font-size:3rem">
+    <v-row style="height: 30vh" align="center">
+      <v-col style="text-align: center">
+        <h2 style="font-size: 3rem">
           تحويل الأعداد العربية إلى ما يقابلها كتابةً
         </h2>
       </v-col>
@@ -17,7 +17,13 @@
         </v-text-field>
       </v-col>
       <v-col cols="6" sm="4" md="2">
-        <v-select v-model="arabicNumber" outlined label="أدخل الرقم">
+        <v-select
+          v-model="countee"
+          :items="types"
+          outlined
+          :item-value="itemValue()"
+          label="أدخل المعدود"
+        >
         </v-select>
       </v-col>
       <v-col cols="6" sm="4" md="2">
@@ -37,9 +43,7 @@
     <v-row>
       <v-col cols="12" class="output ma-2">
         <v-btn class="copy-btn" icon fab>
-          <v-icon v-clipboard:copy="output">
-            mdi-content-copy
-          </v-icon>
+          <v-icon v-clipboard:copy="output"> mdi-content-copy </v-icon>
         </v-btn>
         <p>{{ output }}</p>
       </v-col>
@@ -74,8 +78,8 @@ export default {
     },
   },
   methods: {
+    itemValue(item) {},
     changeArbic(num) {
-      console.log("hi");
       let arabicArr = {
         "٠": 0,
         "١": 1,
@@ -106,15 +110,33 @@ export default {
   },
   computed: {
     output() {
-      return this.prefix + " " + tafqeet(this.arabicNumber) + " " + this.suffix;
+      return (
+        this.prefix +
+        " " +
+        tafqeet(this.arabicNumber) +
+        " " +
+        this.countee +
+        " " +
+        this.suffix
+      );
     },
   },
   data() {
     return {
+      countee: "",
       types: [
         {
           text: "ريال سعودي",
-          value: "ريال سعودياً",
+          2: "ريالان سعوديان",
+          11: "ريالاً سعودياً",
+        },
+        {
+          text: "جنيه مصري ",
+          value: "جنيهاً مصرياً",
+        },
+        {
+          text: "ليرة سورية",
+          value: "ليرة سورية",
         },
       ],
 
@@ -123,6 +145,5 @@ export default {
       suffix: "لا غير",
     };
   },
-  components: {},
 };
 </script>
