@@ -14,7 +14,7 @@
     <v-footer>
       <v-container>
         <v-row style="text-align:center">
-          <v-col  cols="12" md="6">
+          <v-col cols="12" md="6">
             <p>
               تفقيط.كوم لتحويل الارقام العربية إلى ما يقابلها كتابة، مع مراعاة
               التذكير والتأنيث . <br />

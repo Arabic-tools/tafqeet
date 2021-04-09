@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row style="height: 30vh" align="center">
+    <v-row style="min-height: 30vh" align="center">
       <v-col style="text-align: center">
         <h2 style="font-size: 2.8rem">
           تحويل الأعداد العربية إلى ما يقابلها كتابةً
@@ -8,11 +8,11 @@
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-col cols="12" sm="4" md="2">
+      <v-col order-sm="1" cols="6" sm="4" md="2">
         <v-text-field v-model="prefix" outlined label="أدخل الكلام السابق">
         </v-text-field>
       </v-col>
-      <v-col cols="12" sm="4" md="3">
+      <v-col order-sm="3" cols="6" sm="4" md="3">
         <v-text-field
           color="indigo base"
           v-model="arabicNumber"
@@ -21,7 +21,7 @@
         >
         </v-text-field>
       </v-col>
-      <v-col cols="6" sm="4" md="2">
+      <v-col order-sm="4" cols="6" sm="4" md="2">
         <v-select
           v-model="countee"
           :items="types"
@@ -40,7 +40,7 @@
         >
         </v-select>
       </v-col> -->
-      <v-col cols="12" sm="4" md="2">
+      <v-col cols="6" order-sm="2" sm="4" md="2">
         <v-text-field v-model="suffix" outlined label="أدخل الكلام اللاحق">
         </v-text-field>
       </v-col>
@@ -183,10 +183,34 @@ export default {
           },
         },
         {
+          text: "ريال ",
+          "2": "ريالان ",
+          "3": "ريالات ",
+          "11": "ريالاً ",
+          sub: {
+            text: "هللة",
+            "2": "هللتان",
+            "3": "هللات",
+            "11": "هللة",
+          },
+        },
+        {
           text: "جنيه مصري",
           "2": "جنيهان مصريان",
           "3": "جنيهات مصرية",
           "11": "جنيهاً مصرياً",
+          sub: {
+            text: "قرش",
+            "2": "قرشان",
+            "3": "قروش",
+            "11": "قرشاً",
+          },
+        },
+        {
+          text: "جنيه ",
+          "2": "جنيهان ",
+          "3": "جنيهات ",
+          "11": "جنيهاً ",
           sub: {
             text: "قرش",
             "2": "قرشان",
