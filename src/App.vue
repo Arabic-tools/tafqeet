@@ -6,6 +6,9 @@
       </div>
 
       <v-spacer></v-spacer>
+      <div class="d-flex align-center">
+        <h1>Tafqet.com</h1>
+      </div>
     </v-app-bar>
 
     <v-main>

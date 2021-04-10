@@ -8,11 +8,7 @@
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-col order-sm="1" cols="6" sm="4" md="2">
-        <v-text-field v-model="prefix" outlined label="أدخل الكلام السابق">
-        </v-text-field>
-      </v-col>
-      <v-col order-sm="3" cols="6" sm="4" md="3">
+      <v-col cols="6" sm="4" md="3">
         <v-text-field
           color="indigo base"
           v-model="arabicNumber"
@@ -21,7 +17,7 @@
         >
         </v-text-field>
       </v-col>
-      <v-col order-sm="4" cols="6" sm="4" md="2">
+      <v-col cols="6" sm="4" md="2">
         <v-select
           v-model="countee"
           :items="types"
@@ -31,16 +27,12 @@
         >
         </v-select>
       </v-col>
-      <!-- <v-col cols="6" sm="4" md="2">
-        <v-select
-          v-model="arabicNumber"
-          :items="['مائة', 'مئة']"
-          outlined
-          label="وجود المد"
-        >
-        </v-select>
-      </v-col> -->
-      <v-col cols="6" order-sm="2" sm="4" md="2">
+
+      <v-col cols="6" sm="4" md="2">
+        <v-text-field v-model="prefix" outlined label="أدخل الكلام السابق">
+        </v-text-field>
+      </v-col>
+      <v-col cols="6" sm="4" md="2">
         <v-text-field v-model="suffix" outlined label="أدخل الكلام اللاحق">
         </v-text-field>
       </v-col>
@@ -62,7 +54,10 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col></v-col>
+      <v-col style="text-align:center;color:#e2e2e2;"
+        >تفقيط, تحويل الأرقام إلى كلمات, تحويل الأعداد الى كلمات, تحويل الأرقام
+        إلى حروف, أو كتابة الارقام بالكلمات العربية.</v-col
+      >
     </v-row>
   </v-container>
 </template>
@@ -82,6 +77,7 @@
 </style>
 <script>
 import { tafqeet } from "../scripts/tafqeet";
+const { types } = require("./data.json");
 export default {
   name: "Home",
   watch: {
@@ -98,7 +94,6 @@ export default {
     getTafqeetwithCountee(number, countee) {
       // console.log(tafqeet(number) + this.getCountee(countee, number));
       let x = parseInt(number);
-
       return (
         (x > 2 ? tafqeet(number) + " " : "") + this.getCountee(countee, number)
       );
@@ -169,69 +164,7 @@ export default {
           "11": "هللة",
         },
       },
-      types: [
-        {
-          text: "ريال سعودي",
-          "2": "ريالان سعوديان",
-          "3": "ريالات سعودية",
-          "11": "ريالاً سعودياً",
-          sub: {
-            text: "هللة",
-            "2": "هللتان",
-            "3": "هللات",
-            "11": "هللة",
-          },
-        },
-        {
-          text: "ريال ",
-          "2": "ريالان ",
-          "3": "ريالات ",
-          "11": "ريالاً ",
-          sub: {
-            text: "هللة",
-            "2": "هللتان",
-            "3": "هللات",
-            "11": "هللة",
-          },
-        },
-        {
-          text: "جنيه مصري",
-          "2": "جنيهان مصريان",
-          "3": "جنيهات مصرية",
-          "11": "جنيهاً مصرياً",
-          sub: {
-            text: "قرش",
-            "2": "قرشان",
-            "3": "قروش",
-            "11": "قرشاً",
-          },
-        },
-        {
-          text: "جنيه ",
-          "2": "جنيهان ",
-          "3": "جنيهات ",
-          "11": "جنيهاً ",
-          sub: {
-            text: "قرش",
-            "2": "قرشان",
-            "3": "قروش",
-            "11": "قرشاً",
-          },
-        },
-        {
-          text: "ليرة سورية",
-          "2": "ليرتان سوريتان",
-          "3": "ليرات سورية",
-          "11": "ليرةً سوريةً",
-          sub: {
-            text: "قرش",
-            "2": "قرشان",
-            "3": "قروش",
-            "11": "قرشاً",
-          },
-        },
-      ],
-
+      types,
       arabicNumber: "1",
       prefix: "فقط",
       suffix: "لا غير",
