@@ -21,6 +21,7 @@
         <v-select
           v-model="countee"
           :items="types"
+          clearable
           outlined
           :item-value="itemValue"
           label="أدخل المعدود"
@@ -136,36 +137,30 @@ export default {
   },
   computed: {
     output() {
-      this.getTafqeetwithCountee(this.arabicNumber, this.countee);
       let main = this.arabicNumber;
-      let sub = (main - Math.floor(main)).toFixed(2) * 100;
+      let sub =
+        (main - Math.floor(main)).toFixed(2) *
+        (this.countee.genre === "weight" ? 1000 : 100);
 
-      return (
-        this.prefix +
-        " " +
-        this.getTafqeetwithCountee(this.arabicNumber, this.countee) +
-        (sub ? " و" + this.getTafqeetwithCountee(sub, this.countee.sub) : "") +
-        " " +
-        this.suffix
-      );
+      if (main && this.countee != {}) {
+        return (
+          this.prefix +
+          " " +
+          this.getTafqeetwithCountee(this.arabicNumber, this.countee) +
+          (sub
+            ? " و" + this.getTafqeetwithCountee(sub, this.countee.sub)
+            : "") +
+          " " +
+          this.suffix
+        );
+      } else return this.prefix + " " + this.suffix;
     },
   },
   data() {
     return {
-      countee: {
-        text: "ريال سعودي",
-        "2": "ريالان سعوديان",
-        "3": "ريالات سعودية",
-        "11": "ريالاً سعودياً",
-        sub: {
-          text: "هللة",
-          "2": "هللتان",
-          "3": "هللات",
-          "11": "هللة",
-        },
-      },
+      countee: {},
       types,
-      arabicNumber: "1",
+      arabicNumber: "",
       prefix: "فقط",
       suffix: "لا غير",
     };

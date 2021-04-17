@@ -28,7 +28,7 @@
           <v-col cols="12" md="6">
             <p>
               للإتصال بنا: Tafqet@inboxeen.com <br />
-              Tafqet is mumbers to Words Converter
+              Tafqet is numbers to Words Converter
             </p>
           </v-col>
         </v-row>
