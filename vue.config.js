@@ -1,5 +1,5 @@
 module.exports = {
-  productionSourceMap: false,
+  // productionSourceMap: false, // test production option outside the function 
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
       // mutate config for production...

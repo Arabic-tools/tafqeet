@@ -13,11 +13,12 @@
           color="indigo base"
           v-model="arabicNumber"
           outlined
+          
           label="أدخل الرقم"
         >
         </v-text-field>
       </v-col>
-      <v-col cols="6" sm="4" md="2">
+      <v-col cols="6" sm="4" md="3">
         <v-select
           v-model="countee"
           :items="types"
@@ -93,10 +94,11 @@ export default {
     },
 
     getTafqeetwithCountee(number, countee) {
-      // console.log(tafqeet(number) + this.getCountee(countee, number));
+      console.log(number, countee);
       let x = parseInt(number);
       return (
-        (x > 2 ? tafqeet(number) + " " : "") + this.getCountee(countee, number)
+        (x > 2 ? tafqeet(number) + " " : "") +
+        (countee != null ? this.getCountee(countee, number) : "")
       );
     },
     getCountee(countee, number) {
@@ -138,11 +140,9 @@ export default {
   computed: {
     output() {
       let main = this.arabicNumber;
-      let sub =
-        (main - Math.floor(main)).toFixed(2) *
-        (this.countee.genre === "weight" ? 1000 : 100);
 
-      if (main && this.countee != {}) {
+      if (main ) {
+        let sub =  this.countee ?  (main - Math.floor(main)).toFixed(2) * this.countee.base : null;
         return (
           this.prefix +
           " " +
@@ -158,7 +158,7 @@ export default {
   },
   data() {
     return {
-      countee: {},
+      countee: null,
       types,
       arabicNumber: "",
       prefix: "فقط",
