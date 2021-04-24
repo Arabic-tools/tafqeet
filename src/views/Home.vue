@@ -13,13 +13,12 @@
           color="indigo base"
           v-model="arabicNumber"
           outlined
-          
           label="أدخل الرقم"
         >
         </v-text-field>
       </v-col>
       <v-col cols="6" sm="4" md="3">
-        <v-select
+        <v-autocomplete
           v-model="countee"
           :items="types"
           clearable
@@ -27,7 +26,7 @@
           :item-value="itemValue"
           label="أدخل المعدود"
         >
-        </v-select>
+        </v-autocomplete>
       </v-col>
 
       <v-col cols="6" sm="4" md="2">
@@ -141,8 +140,10 @@ export default {
     output() {
       let main = this.arabicNumber;
 
-      if (main ) {
-        let sub =  this.countee ?  (main - Math.floor(main)).toFixed(2) * this.countee.base : null;
+      if (main) {
+        let sub = this.countee
+          ? (main - Math.floor(main)).toFixed(2) * this.countee.base
+          : null;
         return (
           this.prefix +
           " " +
