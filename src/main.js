@@ -5,6 +5,12 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import VueClipboard from 'vue-clipboard2'
 
+import VueGtag from "vue-gtag";
+
+Vue.use(VueGtag, {
+  config: { id: "G-YBPRXJM1VQ" }
+}, router);
+
 Vue.use(VueClipboard)
 
 Vue.config.productionTip = false
