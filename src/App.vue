@@ -26,6 +26,10 @@
             </p>
           </v-col>
           <v-col cols="12" md="6">
+                      الموقع برعاية :
+
+          <a href="https://wasetshera.com?myad=53199"> وسيط شراء من الإنترنت</a>
+          <br />
             <p>
               للإتصال بنا: Tafqet@inboxeen.com <br />
               Tafqet is numbers to Words Converter
