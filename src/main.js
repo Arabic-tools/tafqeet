@@ -8,7 +8,7 @@ import VueClipboard from 'vue-clipboard2'
 import VueGtag from "vue-gtag";
 
 Vue.use(VueGtag, {
-  config: { id: "G-YBPRXJM1VQ" }
+  config: { id: "UA-208155997-7" }
 }, router);
 
 Vue.use(VueClipboard)
