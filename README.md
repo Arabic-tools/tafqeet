@@ -5,6 +5,7 @@ Right before the closing body tag
 <script>
 function send_conversion(){
  gtag('config', 'AW-955968979');
+ console.log('conversion sent');
 // Event snippet for Tafqet lead conversion page
  gtag('event', 'conversion', {'send_to': 'AW-955968979/v_r5CJjU6ZQDENPb68cD'});
 }
