@@ -26,9 +26,8 @@
             </p>
           </v-col>
           <v-col cols="12" md="6">
-                      الموقع برعاية :
-
-          <a href="https://wasetshera.com?myad=53199"> وسيط شراء من الإنترنت</a>
+  <span class="effra-font">برعاية لطيفة من الرائعين في: <a class="effra-font" href="https://wasetshera.com/?myad=53199" >وسيط شراء</a> و <a class="effra-font" href="https://knaree.com/" >كناري</a> و <a class="effra-font" href="https://rmmmz.com/" >رمز</a></span>	
+		
           <br />
             <p>
               للإتصال بنا: Tafqet@inboxeen.com <br />
