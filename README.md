@@ -1,6 +1,7 @@
 # tafqeet
 
 Right before the closing body tag
+Below is the script for google adwords:
 
 <script>
 function send_conversion(){
